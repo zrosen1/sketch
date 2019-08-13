@@ -1,0 +1,23 @@
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+.h1Class {
+  color: blue;
+}
+.box:hover{
+  background-color: yellow;
+}
+
+.flex-container > div {
+  /*width: 10px;
+  height: 10px;
+  */
+  background-color: grey;
+}
+div .clicked{
+  background-color: black
+}
+div .notclicked{
+  background-color: grey
+}

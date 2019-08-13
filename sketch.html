@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css   " href="styles.css">
+</head>
+<body>
+    <h1 class="h1Class">H1</h1>
+    <div id="buttonPlace">
+            <button id="btn">New/Clear</button>
+    </div>
+<div id="sketchDiv">
+<script>
+
+    //CREATE 16 DIVS USING JS\
+
+    var fixedLength = 960;
+
+    //var numrows = 16;
+    //var numcols = 16;
+    var sketchDivider = document.querySelector('#sketchDiv');
+    
+    function createGrid(numrows, numcols){
+
+        
+
+        //else{
+       //     numrows = 100;
+       //     numcols = 100;
+       // }
+        for(i = 0; i < numrows; i++){
+            //const div = document.createElement('div');
+            const div = document.createElement('div');
+            div.classList.add('flex-container');
+            div.textContent = ''; //+ i;
+            div.classList.add('extra');
+            sketchDivider.appendChild(div);
+            
+            //console.log(i);
+            div.classList.add('row');
+
+            for(j = 0; j < numcols; j++){
+                const div2 = document.createElement('div');
+                //div2.addEventListener('onmouseover', mousetest());
+                //div2.addEventListener('click', function(e){
+                //console.log(e.target);})
+                
+                div2.classList.add('box');
+                 
+
+                div2.addEventListener('click', mousetest);
+                div2.addEventListener('mouseenter', function(){
+                    div2.classList.add('clicked');
+                    div2.classList.remove('notclicked');
+                    }
+                    );
+                div2.classList.add('notclicked');
+                div2.textContent = ' '; //+ ((numrows * i) + j);
+                
+                //
+                div2.style.height = fixedLength/numrows + 'px';
+                div2.style.width = fixedLength/numcols + 'px';
+               
+                
+                div.appendChild(div2);
+
+            }  
+        }
+    }
+    function mousetest(){
+        console.log('test');
+    }
+    
+    var btn = document.querySelector('#btn')
+    btn.addEventListener('click', function(){deleteGrid();});
+    
+    function deleteGrid(){
+        extrarows = document.querySelectorAll('.extra');
+        rows = document.querySelectorAll('.extra').length;       
+        for(i = 0; i < rows; i++){
+            sketchDivider.removeChild(extrarows[i]);
+            console.log(rows);
+        }
+    }
+    
+     
+    btn.addEventListener('click', function(){newGrid();});
+    function newGrid(){
+        var nr = prompt("Enter number of rows");
+        var nc = prompt("Enter number of cols");
+        createGrid(nr, nc);
+
+     }
+
+
+
+
+
+    
+    
+    
+
+    console.log();
+</script>
+</div>
+</body>
+
+</html>
